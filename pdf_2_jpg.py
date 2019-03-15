@@ -6,7 +6,6 @@
     日期：2018.06.25
 '''
 import sys,os,glob,time,shutil,filetype
-#import PyPDF2,PythonMagick,ghostscript
 import PyPDF2,PythonMagick
 reload(sys)
 sys.setdefaultencoding('gb2312')
@@ -29,7 +28,7 @@ def pdf_to_jpg(PDF_FILE_NAME):
         print u"[%s]:正在转换第%s页,剩余%s页,请稍后." %(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime()),jpg_file_num+1,(PDF_PAGES-jpg_file_num-1))
         JPG_FILE_NAME = PDF_FILE_NAME.split('.')[0] + '_' + str(jpg_file_num+1)+'.jpg'
         im = PythonMagick.Image(PDF_FILE_NAME + '[' + str(jpg_file_num) +']')  
-        im.density('300')  
+        im.density('300')  #设置转换分辨率，分辨率越高图片质量越好，但是同时耗费的时间越多
         im.write(JPG_FILE_NAME)
         shutil.move(JPG_FILE_NAME,JPG_FILE_DIR) 
     print '\n' + 50*'-' + '\n'
@@ -46,4 +45,4 @@ if __name__ == "__main__":
     for PDF_FILE_NAME in pdf_list():
         pdf_to_jpg(PDF_FILE_NAME)
     print u"[%s]:转换完成!" %time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())
-    raw_input()
+    #raw_input()
