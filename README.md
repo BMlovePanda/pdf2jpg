@@ -8,7 +8,7 @@ PyPDF2==1.26.0
 
 filetype==1.0.1
 
-ghostscript==0.6
+PythonMagick==0.9.10 #可能需要额外下载whl文件安装
 
 #### 几个需要注意的地方
 1、需要使用ImageMagick以及ghostscripts（gs）；
